@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "animego to shikimori",
-  "version": "1.0",
+  "version": "1.1",
   "description": "adds watched episodes from animego to shikimori",
   "permissions": ["scripting", "activeTab", "storage"],
   "options_ui": {
