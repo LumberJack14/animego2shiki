@@ -4,7 +4,7 @@ Chrome extension для добавления просмотренных эпиз
 
 ## set up
 
-chrome://extensions -> load unpacked -> choose this project directory -> turn on -> click on extension and then "Settings"
+chrome://extensions -> load unpacked (dev mode should be on) -> choose this project directory -> turn on -> click on extension and then "Settings"
 
 ## Планируется
 
