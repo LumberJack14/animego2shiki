@@ -4,9 +4,20 @@ Chrome extension для добавления просмотренных эпиз
 
 ## set up
 
-chrome://extensions -> load unpacked (dev mode should be on) -> choose this project directory -> turn on -> click on extension and then "Settings"
+1. Склонировать репозиторий
+
+```bash
+git clone https://github.com/LumberJack14/animego2shiki.git
+```
+
+2. Установить расширение
+
+chrome://extensions -> load unpacked (dev mode должен быть включен) -> выбрать директорию с проектом -> turn on -> нажать на иконку расширения и перейти в настройки
+
+3. Следовать указаниям в настройках
 
 ## Планируется
 
 1. добавить портирование вашего списка с анимего на шики
 2. пофиксить баги
+3. Использовать собственные injected html компоненты вместо анимегошных
