@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extension Settings</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Settings</h1>
+    <p>
+      In order to be able to use this extension you should obtain Authorization
+      code, Access token and Refresh token
+    </p>
+    <br />
+    <a href="https://shikimori.one/oauth" target="_blank" id="authLink"
+      >Shikimori OAuth settings</a
+    >
+    <!-- TODO add username to then find userID -->
+    <form id="settings-form">
+      <input
+        type="text"
+        class="balumba"
+        name="username"
+        id="username"
+        placeholder="Enter your shikimori username"
+      /><br /><br />
+      <input
+        type="text"
+        class="balumba"
+        name="appName"
+        id="appName"
+        placeholder="Enter your app name"
+      /><br /><br />
+      <input
+        type="text"
+        class="balumba"
+        name="authCode"
+        id="authCode"
+        placeholder="Enter your auth code here"
+      /><br /><br />
+      <input
+        type="text"
+        class="balumba"
+        name="clientId"
+        id="clientId"
+        placeholder="Enter your client ID here"
+      /><br /><br />
+      <input
+        type="text"
+        class="balumba"
+        name="clientSecret"
+        id="clientSecret"
+        placeholder="Enter your client Secret here"
+      /><br /><br />
+      <button type="submit">Save</button>
+    </form>
+    <div id="status"></div>
+
+    <script src="options.js"></script>
+
+    <style>
+      .balumba {
+        width: 500px;
+      }
+    </style>
+  </body>
+</html>

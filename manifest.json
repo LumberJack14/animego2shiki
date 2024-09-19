@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "animego to shikimori",
+  "version": "1.0",
+  "description": "adds watched episodes from animego to shikimori",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["https://animego.org/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://animego.org/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
