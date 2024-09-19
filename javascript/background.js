@@ -6,13 +6,19 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     return;
   }
 
-  let animeId = await fetchAnimeID(message.title);
-  animeId = await fetchAnimeID(message.title);
+  let animeId = -1;
+
+  try {
+    animeId = await fetchAnimeID(message.title);
+  } catch (error) {
+    renewAccessToken();
+    animeId = await fetchAnimeID(message.title);
+  }
   console.log("animeId: " + animeId);
 
-  const userId = await fetchUserID();
+  const userId = await getUserId();
 
-  responseUponAdding = addEpisode(
+  responseUponAdding = await addEpisode(
     message.title,
     animeId,
     message.episodeNumber,
@@ -46,8 +52,7 @@ const fetchAnimeID = async function (title) {
   }).then(response => {
     if (response.status === 401) {
       return response.json().then(errorData => {
-        console.error(`${errorData.error_description}`);
-        renewAccessToken();
+        throw new Error(`${errorData.error_description}`);
       });
     }
 
@@ -56,46 +61,6 @@ const fetchAnimeID = async function (title) {
   let data = await results;
 
   return data.data.animes[0].id;
-};
-
-const fetchUserID = async function () {
-  const accessToken = await getAccessToken();
-  const appName = await getAppName();
-  const username = await getUsername();
-
-  let results = await fetch("https://shikimori.one/api/graphql", {
-    method: "POST",
-
-    headers: {
-      "Content-Type": "application/json",
-      "User-Agent": appName,
-      Authorization: `Bearer ${accessToken}`,
-    },
-
-    body: JSON.stringify({
-      query: `{
-        users(search: "${username}") {
-          nickname
-          id
-          url
-  }
-}`,
-    }),
-  }).then(response => {
-    if (response.status === 401) {
-      return response.json().then(errorData => {
-        console.error(`${errorData.error_description}`);
-        renewAccessToken();
-      });
-    }
-
-    return response.json();
-  });
-  let data = await results;
-
-  console.log(data);
-
-  return data.data.users[0].id;
 };
 
 const addEpisode = async function (title, animeId, episodeNumber, userId) {
@@ -135,6 +100,15 @@ const addEpisode = async function (title, animeId, episodeNumber, userId) {
   let data = await results;
 
   return data;
+};
+
+const getUserId = async function () {
+  const userId = await chrome.storage.sync.get(["userId"]);
+  if (!userId) {
+    console.log("failed to obtain userId");
+    return -1;
+  }
+  return userId.userId;
 };
 
 const getAuthCode = async function () {

@@ -21,7 +21,6 @@
     <a href="https://shikimori.one/oauth" target="_blank" id="authLink"
       >Shikimori OAuth settings</a
     >
-    <!-- TODO add username to then find userID -->
     <form id="settings-form">
       <input
         type="text"
@@ -29,7 +28,10 @@
         name="username"
         id="username"
         placeholder="Enter your shikimori username"
-      /><br /><br />
+      /><br />
+      <p>Your shikimori userId:</p>
+      <p id="p_userId"></p>
+      <br />
       <input
         type="text"
         class="balumba"
@@ -62,7 +64,7 @@
     </form>
     <div id="status"></div>
 
-    <script src="options.js"></script>
+    <script src="../javascript/options.js"></script>
 
     <style>
       .balumba {

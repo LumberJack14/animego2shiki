@@ -5,20 +5,20 @@
   "description": "adds watched episodes from animego to shikimori",
   "permissions": ["scripting", "activeTab", "storage"],
   "options_ui": {
-    "page": "options.html",
+    "page": "html/options.html",
     "open_in_tab": true
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "javascript/background.js"
   },
   "host_permissions": ["https://animego.org/*"],
   "content_scripts": [
     {
       "matches": ["https://animego.org/*"],
-      "js": ["content.js"]
+      "js": ["javascript/content.js"]
     }
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "html/popup.html"
   }
 }
