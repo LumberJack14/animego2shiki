@@ -2,6 +2,10 @@
 
 Chrome extension для добавления просмотренных эпизодов на animego.org в историю вашего шики.
 
+## set up
+
+chrome://extensions -> load unpacked -> choose this project directory -> turn on -> click on extension and then "Settings"
+
 ## Планируется
 
 1. добавить портирование вашего списка с анимего на шики
